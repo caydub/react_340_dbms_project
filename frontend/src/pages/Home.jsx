@@ -1,13 +1,19 @@
+import '/Home.css'; // Import your CSS file
+
 function Home() {
     return (
         <>
             <h1>Welcome to Group 60's Project!</h1>
             <h2>Album Ranking and Sales Database Management System</h2>
             <div className="homepageDescription">
-                <p>Developed by Caleb Richter and Andrew Walsh</p>
-                <p>Use the navigation bar above to navigate through the database app...</p>
-                <p>or do whatever we guess, we're not your mom!</p>
+                <p>Caleb Richter</p>
+                <p> &</p>
+                <p>Andrew Walsh</p>
+                <p>Group 60</p>
+                <p>Funky McRhythms Record DBMS</p>
             </div>
         </>
     )
-} export default Home;
+}
+
+export default Home;
