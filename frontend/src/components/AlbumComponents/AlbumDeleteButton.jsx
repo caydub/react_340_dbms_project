@@ -1,3 +1,12 @@
+// Citation for use of AI Tools:
+// AI Model: Claude 3.5 Sonnet
+// Date: 11/20/2024
+// Used to create delete functionality for albums. Generated AlbumDeleteButton.jsx
+// component from GenericDeleteButton with fetch request to backend /Albums/delete
+// route, confirmation dialog,
+// error handling, and table refresh on successful deletion.
+// AI Source URL: https://claude.ai/
+
 const AlbumDeleteButton = ({ rowObject, backendURL, refreshRows }) => {
 
     const handleDelete = async (e) => {
