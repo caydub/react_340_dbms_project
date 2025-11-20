@@ -14,7 +14,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json()); // this is needed for post requests
 
 // Valid ports = 1024 < PORT < 65535
-const PORT = 59795;
+const PORT = 59695;
 
 // ########################################
 // ########## ROUTE HANDLERS
@@ -38,27 +38,6 @@ app.get('/Albums', async (req, res) => {
         res.status(500).send("An error occurred while executing the database queries.");
     }
 
-});
-
-// DELETE Albums
-app.post('/Albums/delete', async (req, res) => {
-    try {
-        // Parse frontend form info
-        const data = req.body;
-
-        // Create and execute our qeury
-        // Using parameterized queries (Prevents SQL injection attacks)
-        const query1 = 'CALL sp_DeleteAlbum(?);';
-        await db.query(query1, [data.delete_album_ID]);
-
-        console.log(`Deleted Album.id: ${data.delete_album_ID}`);
-
-        res.redirect('/Albums');
-    } catch (error) {
-        console.error('Error executing queries:', error);
-        // Send a generic error message to the browser
-        res.status(500).send('An error occurred while executing the album database queries.');
-    }
 });
 
 app.get('/Artists', async (req, res) => {
@@ -174,6 +153,48 @@ app.post('/reset', async function (req, res) {
         res.status(500).send(
             'An error occurred while resetting the database.'
         );
+    }
+});
+
+// DELETE ROUTE for Albums
+// Add this to your server file (e.g., app.js or server.js)
+
+app.post('/Albums/delete', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_DeleteAlbum(?);`;
+        await db.query(query1, [data.albumID]);
+
+        console.log(`DELETE Album. ID: ${data.albumID} ` +
+            `Name: ${data.albumName || 'N/A'}`
+        );
+
+        // Send success response back to frontend
+        res.status(200).json({
+            success: true,
+            message: 'Album deleted successfully'
+        });
+
+    } catch (error) {
+        console.error('Error deleting album:', error);
+
+        // Check if error is due to foreign key constraint
+        if (error.code === 'ER_ROW_IS_REFERENCED_2') {
+            res.status(400).json({
+                success: false,
+                message: 'Cannot delete album. It has associated ratings or sales.'
+            });
+        } else {
+            // Send a generic error message
+            res.status(500).json({
+                success: false,
+                message: 'An error occurred while deleting the album.'
+            });
+        }
     }
 });
 

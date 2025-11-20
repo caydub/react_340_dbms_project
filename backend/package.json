@@ -7,7 +7,7 @@
     "development": "nodemon server.js",
     "production": "npx forever start server.js",
     "stop_production": "npx forever stop server.js"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

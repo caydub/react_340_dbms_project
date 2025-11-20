@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
-import TableRow from '../components/TableRow';
+import TableRow from '../components/AlbumComponents/AlbumTableRow';
 import CreateAlbumForm from '../components/AlbumComponents/CreateAlbumForm';
 
 function Albums({ backendURL }) {
