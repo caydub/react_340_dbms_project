@@ -62,7 +62,7 @@ app.post('/Albums/create', async (req, res) => {
 });
 
 // UPDATE Albums
-app.post('/Albums/udpate', async (req, res) => {
+app.post('/Albums/update', async (req, res) => {
     try {
         const data = req.body;
         const query1 = 'CALL sp_UpdateAlbum(?, ?, ?, ?, ?, ?);';

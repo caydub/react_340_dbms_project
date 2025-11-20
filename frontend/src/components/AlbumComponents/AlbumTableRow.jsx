@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import AlbumDeleteButton from './AlbumDeleteButton';
-import GenericUpdateButton from '../GenericUpdateButton';
+import { useState } from "react";
+import AlbumDeleteButton from "./AlbumDeleteButton";
+import GenericUpdateButton from "../GenericUpdateButton";
 
 const AlbumTableRow = ({ album, backendURL, refreshRows }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -9,20 +9,21 @@ const AlbumTableRow = ({ album, backendURL, refreshRows }) => {
     const handleInputChange = (key, value) => {
         setEditedValues(prev => ({
             ...prev,
-            [key]: value,
+            [key]: value
         }));
     };
 
     return (
         <tr>
             {Object.entries(album).map(([key, value], index) => (
-                <td key={index}>
-                    {isEditing && index !== 0 ? ( // first column (ID) not editable
+                <td key={key}>
+                    {isEditing && key !== "albumID" ? (
                         <input
-                            type="text"
-                            value={editedValues[key] || ''}
+                            type={key.includes("price") || key.includes("amount") ? "number" : "text"}
+                            name={key}
+                            value={editedValues[key]}
                             onChange={(e) => handleInputChange(key, e.target.value)}
-                            style={{ width: '100%' }}
+                            style={{ width: "100%" }}
                         />
                     ) : (
                         value
@@ -39,11 +40,13 @@ const AlbumTableRow = ({ album, backendURL, refreshRows }) => {
             <GenericUpdateButton
                 rowObject={album}
                 editedValues={editedValues}
-                backendURL={backendURL}
-                refreshRows={refreshRows}
+                setEditedValues={setEditedValues}
                 isEditing={isEditing}
                 setIsEditing={setIsEditing}
-                setEditedValues={setEditedValues}
+                backendURL={backendURL}
+                updateRoute="/Albums/update"
+                editableFields={Object.keys(album).filter(k => k !== "albumID")}
+                refreshRows={refreshRows}
             />
         </tr>
     );
