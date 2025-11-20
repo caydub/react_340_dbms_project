@@ -1,3 +1,11 @@
+// Citation for use of AI Tools:
+// AI Model: Claude 3.5 Sonnet
+// Date: 11/20/2024
+// Used to create database reset functionality. Generated ResetButton.jsx component
+// with fetch request to backend /reset-database route, confirmation dialog,
+// error handling, and callback for post-reset actions.
+// AI Source URL: https://claude.ai/
+
 const ResetButton = ({ backendURL, onResetComplete }) => {
 
     const handleReset = async (e) => {

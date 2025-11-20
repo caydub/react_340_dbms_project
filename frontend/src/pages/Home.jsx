@@ -1,3 +1,11 @@
+// Citation for use of AI Tools:
+// AI Model: Claude 3.5 Sonnet
+// Date: 11/20/2024
+// Used to integrate ResetButton component into Home page. Added import statement,
+// backend URL configuration, callback handler, and positioned reset button at
+// bottom of homepage.
+// AI Source URL: https://claude.ai/
+
 import '/Home.css'; // Import your CSS file
 import ResetButton from '../components/ResetButton';
 
