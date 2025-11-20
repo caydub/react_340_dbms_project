@@ -199,7 +199,7 @@ app.get('/LineItems', async (req, res) => {
 });
 
 // RESET DATABASE ROUTE
-app.post('/reset-database', async function (req, res) {
+app.post('/reset', async function (req, res) {
     try {
         // Execute the stored procedure to reset sample data
         const query = `CALL sp_reset_sample_data();`;
