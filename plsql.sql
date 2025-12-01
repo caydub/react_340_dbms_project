@@ -1,3 +1,5 @@
+// This module adapted from the starter code provided in CS340 Modules/Explorations
+
 DROP PROCEDURE sp_CreateAlbum;
 DELIMITER //
 CREATE DEFINER=`cs340_richtcal`@`%` PROCEDURE `sp_CreateAlbum`(

@@ -149,7 +149,7 @@ VALUES
         'Dr. Feelgood', 21.99, 4, 'MotleyCrue', 'Rock'
     ),
     (
-        'Master Of Puppets', 24.99, 5, 'Metallica', 'Metal'
+        'Master of Puppets', 24.99, 5, 'Metallica', 'Metal'
     ),
     (
         'Abbey Road', 22.50, 7, 'Beatles', 'RockNRoll'
@@ -189,7 +189,7 @@ VALUES
     (
         1.0,
         (SELECT albumID FROM Albums
-        WHERE albumName = 'Master Of Puppets'),
+        WHERE albumName = 'Master of Puppets'),
         (SELECT customerID FROM Customers
         WHERE firstName = 'Jimmy' AND lastName = 'Buffet')
     ),
@@ -270,7 +270,7 @@ VALUES
         AND Customers.lastName = 'Johnson'
         AND Sales.purchaseDate = '2025-10-11'),
         (SELECT albumID FROM Albums
-        WHERE albumName = 'Master Of Puppets')
+        WHERE albumName = 'Master of Puppets')
     );
 
 -- Untidying up the place
