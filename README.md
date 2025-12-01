@@ -46,9 +46,19 @@ AI Model: Claude 3.5 Sonnet
  Purpose: Integrated ResetButton component into Home page. Added import statement, backend URL configuration, callback handler, and positioned reset button at bottom of homepage.
  Source URL: https://claude.ai/
 
+Citation 7
+
+AI Model: Claude AI
+Date: 12/01/2025
+Purpose: Created ASCII art displaying "CS 340 Project"
+Prompts:
+Prompt 1: Create ascii art that says "CS 340 Project"
+Source URL: https://claude.ai/share/1954fc3d-fc14-41cc-9899-d74ef713adbd
+
 NON-AI CITATIONS
 
-Citation 7
+Citation 8
+
 Source: CS340 Modules/Explorations (November 2025)
- Purpose: Utilized REACT template code and video walkthroughs for several of the generic components/pages.
+ Purpose: Utilized REACT template code and video walkthroughs for several of the generic components/pages, CRUD operations, etc.
  Source URL: https://canvas.oregonstate.edu/courses/2017561/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25645149
