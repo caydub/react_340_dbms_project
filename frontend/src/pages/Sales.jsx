@@ -1,4 +1,19 @@
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Page structure and data fetching patterns
+   Summary: Base page structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Updated Sales page with proper headers for action columns
+   Summary: Added headers for Line Items and Update columns.
+   AI Source URL: https://claude.ai/
+*/
+
+import { useState, useEffect } from 'react';
 import TableRow from '../components/SalesComponents/SalesTableRow';
 import CreateSalesForm from '../components/SalesComponents/CreateSalesForm';
 
@@ -41,6 +56,7 @@ function Sales({ backendURL }) {
                             <th key={index}>{header}</th>
                         ))}
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -56,4 +72,6 @@ function Sales({ backendURL }) {
         </>
     );
 
-} export default Sales;
+}
+
+export default Sales;

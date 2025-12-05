@@ -1,27 +1,18 @@
-// The following prompts were utilized to update the components, TableRow.jsx
-// and GenericUpdateButton.jsx, with functionality to edit row data in place. 
-//
-// Citations for use of AI Tools:
-// AI Model: Claude 3
-// Date: 11/13/2025
-// Prompts used to generate JavaScript XML
-//
-// Prompt 1:
-// Hey Claude, I am trying to implement a way to make the update button in the
-// table row to allow the user # to update the row values in place. The update
-// values will be from server.js, but you do not need to worry about that for
-// now. We do not need to implement any actual CRUD implementation at this time,
-// just make the update button present the values already in place and make
-// them editable.
-//
-// Prompt 2:
-// Can you make it to where the first attribute/column is not editable?
-// 
-// AI Source URL: https://claude.ai/share/5669c902-16cc-44ae-9829-9b2f824b14c0
-
-// This module adapted from the starter code provided in CS340 Modules/Explorations
-
-
+/* Citations:
+   
+   Source: CS340 Modules/Explorations and Previous AI Assistance
+   Date: November 2025
+   Purpose: Table row component with inline editing for Albums
+   Summary: Base table row structure adapted from CS340 starter code and AI assistance.
+   AI Citations: Claude 3, 11/13/2025
+   AI Source URL: https://claude.ai/share/5669c902-16cc-44ae-9829-9b2f824b14c0
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Updated to prevent avgRating from being editable
+   Summary: Made avgRating non-editable since it's a calculated field from AlbumRatings table.
+   AI Source URL: https://claude.ai/
+*/
 
 import { useState } from "react";
 import AlbumDeleteButton from "./AlbumDeleteButton";
@@ -42,10 +33,10 @@ const AlbumTableRow = ({ album, backendURL, refreshRows, genres }) => {
         <tr>
             {Object.entries(album).map(([key, value]) => (
                 <td key={key}>
-                    {isEditing && key !== "albumID" ? (
+                    {isEditing && key !== "albumID" && key !== "avgRating" ? (
                         key === "genreID" ? (
                             <select
-                                name = "genreID"
+                                name="genreID"
                                 value={editedValues.genreID}
                                 onChange={(e) => handleInputChange("genreID", e.target.value)}
                                 style={{ width: "100%" }}

@@ -1,5 +1,21 @@
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
-import TableRow from '../components/TableRow';
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Page structure and data fetching patterns
+   Summary: Base page structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Updated Artists page to use custom table row component
+   Summary: Implemented Artists page with ArtistTableRow for inline editing,
+            supporting full CRUD operations.
+   AI Source URL: https://claude.ai/
+*/
+
+import { useState, useEffect } from 'react';
+import ArtistTableRow from '../components/ArtistComponents/ArtistTableRow.jsx';
 import CreateArtistForm from '../components/ArtistComponents/CreateArtistForm';
 
 function Artists({ backendURL }) {
@@ -47,7 +63,12 @@ function Artists({ backendURL }) {
 
                 <tbody>
                     {artists.map((artist, index) => (
-                        <TableRow key={index} rowObject={artist} backendURL={backendURL} refreshArtists={getData} />
+                        <ArtistTableRow
+                            key={index}
+                            artist={artist}
+                            backendURL={backendURL}
+                            refreshArtists={getData}
+                        />
                     ))}
 
                 </tbody>
@@ -57,4 +78,6 @@ function Artists({ backendURL }) {
         </>
     );
 
-} export default Artists;
+}
+
+export default Artists;

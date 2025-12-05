@@ -1,6 +1,18 @@
-// WORK IN PROGRESS - No routing in place yet for this.
-// Following Module 8 REACT tutorial for AlbumUpdateButton.jsx
-// 11/20
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Update button pattern for inline editing
+   Summary: Base update button structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Created update button for Albums entity with inline editing
+   Summary: Implemented update functionality with save/cancel buttons, backend API call to /Albums/update,
+            and error handling. Updates albumName, albumPrice, amountInStock, artistID, and genreID.
+   AI Source URL: https://claude.ai/
+*/
 
 const AlbumUpdateButton = ({ album, backendURL, refreshRows, editedValues, setEditedValues, isEditing, setIsEditing, genres }) => {
     const handleSave = async () => {

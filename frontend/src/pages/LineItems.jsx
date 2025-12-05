@@ -1,10 +1,24 @@
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
-import TableRow from '../components/TableRow';
-import CreateLineItemsForm from "../components/LineItemsComponents/CreateLineItemsForm.jsx";
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Page structure and data fetching patterns
+   Summary: Base page structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Created READ-only LineItems page
+   Summary: Displays all line items from the database without CRUD operations (READ only).
+   AI Source URL: https://claude.ai/
+*/
+
+import { useState, useEffect } from 'react';
+import NakedTableRow from '../components/NakedTableRow';
 
 function LineItems({ backendURL }) {
 
-    // Set up a state variable `sales` to store and display the backend response
+    // Set up a state variable to store and display the backend response
     const [lineItems, setLineItems] = useState([]);
 
     const getData = async function () {
@@ -15,7 +29,7 @@ function LineItems({ backendURL }) {
             // Convert the response into JSON format
             const { lineItems } = await response.json();
 
-            // Update the sales state with the response data
+            // Update the state with the response data
             setLineItems(lineItems);
 
         } catch (error) {
@@ -32,7 +46,7 @@ function LineItems({ backendURL }) {
 
     return (
         <>
-            <h1>Line Items</h1>
+            <h1>All Line Items</h1>
 
             <table>
                 <thead>
@@ -40,21 +54,18 @@ function LineItems({ backendURL }) {
                         {lineItems.length > 0 && Object.keys(lineItems[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {lineItems.map((lineItem, index) => (
-                        <TableRow key={index} rowObject={lineItem} backendURL={backendURL} refreshRows={getData} />
+                        <NakedTableRow key={index} rowObject={lineItem} />
                     ))}
-
                 </tbody>
             </table>
-
-            <CreateLineItemsForm backendURL={backendURL} refreshLineItems={getData} />
         </>
     );
 
-} export default LineItems;
+}
+
+export default LineItems;

@@ -2,33 +2,31 @@
    
    AI Model: Claude 3.5 Sonnet
    Date: 12/04/2025
-   Purpose: Created delete button for Albums entity
-   Summary: Implemented delete functionality with confirmation dialog, backend API call to /Albums/delete,
-            error handling, and table refresh on successful deletion.
+   Purpose: Created delete button for LineItems entity
+   Summary: Implemented delete functionality with confirmation dialog, backend API call to /LineItems/delete,
+            and table refresh on successful deletion.
    AI Source URL: https://claude.ai/
 */
 
-const AlbumDeleteButton = ({ rowObject, backendURL, refreshRows }) => {
+const LineItemDeleteButton = ({ lineItemID, backendURL, refreshLineItems }) => {
 
     const handleDelete = async (e) => {
         e.preventDefault();
 
         // Confirm deletion with user
-        const albumName = rowObject.albumName || 'this album';
-        if (!window.confirm(`Are you sure you want to delete ${albumName}?`)) {
+        if (!window.confirm(`Are you sure you want to delete line item ID ${lineItemID}?`)) {
             return;
         }
 
         try {
             // Send DELETE request to backend
-            const response = await fetch(backendURL + '/Albums/delete', {
+            const response = await fetch(backendURL + '/LineItems/delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    albumID: rowObject.albumID,
-                    albumName: rowObject.albumName
+                    lineItemID: lineItemID
                 })
             });
 
@@ -36,17 +34,17 @@ const AlbumDeleteButton = ({ rowObject, backendURL, refreshRows }) => {
 
             if (result.success) {
                 // Show success message
-                alert('Album deleted successfully!');
-                // Refresh the table data
-                refreshRows();
+                alert('Line item deleted successfully!');
+                // Refresh the line items
+                refreshLineItems();
             } else {
                 // Show error message from backend
                 alert(`Error: ${result.message}`);
             }
 
         } catch (error) {
-            console.error('Error deleting album:', error);
-            alert('An error occurred while deleting the album.');
+            console.error('Error deleting line item:', error);
+            alert('An error occurred while deleting the line item.');
         }
     };
 
@@ -61,4 +59,4 @@ const AlbumDeleteButton = ({ rowObject, backendURL, refreshRows }) => {
     );
 };
 
-export default AlbumDeleteButton;
+export default LineItemDeleteButton;

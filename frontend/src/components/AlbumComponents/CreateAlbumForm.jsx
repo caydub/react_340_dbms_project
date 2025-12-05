@@ -1,10 +1,19 @@
-// WORK IN PROGRESS - No routing in place yet for this.
-// Following Module 8 REACT tutorial for AlbumUpdateButton.jsx
-// 11/20
-// This module adapted from the starter code provided in CS340 Modules/Explorations
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Form structure and state management patterns
+   Summary: Base form structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25645149
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Made CreateAlbumForm functional with state management and backend integration
+   Summary: Implemented state management, form validation, genre dropdown, and submit handler that calls /Albums/create endpoint.
+   AI Source URL: https://claude.ai/
+*/
 
-
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CreateAlbumForm = ({ backendURL, refreshAlbums }) => {
     const [formData, setFormData] = useState({

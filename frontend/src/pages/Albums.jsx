@@ -1,4 +1,20 @@
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Page structure and data fetching patterns
+   Summary: Base page structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Updated Albums page to use custom table row component and fetch average ratings
+   Summary: Implemented Albums page with AlbumTableRow for inline editing,
+            supporting full CRUD operations. Added avgRating calculation from AlbumRatings table.
+   AI Source URL: https://claude.ai/
+*/
+
+import { useState, useEffect } from 'react';
 import AlbumTableRow from '../components/AlbumComponents/AlbumTableRow';
 import CreateAlbumForm from '../components/AlbumComponents/CreateAlbumForm';
 

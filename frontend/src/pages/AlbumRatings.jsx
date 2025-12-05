@@ -1,10 +1,26 @@
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
-import TableRow from '../components/TableRow';
+/* Citations:
+   
+   Source: CS340 Modules/Explorations
+   Date: November 2025
+   Purpose: Page structure and data fetching patterns
+   Summary: Base page structure adapted from CS340 starter code.
+   Source URL: https://canvas.oregonstate.edu/courses/2017561
+   
+   AI Model: Claude 3.5 Sonnet
+   Date: 12/04/2025
+   Purpose: Updated AlbumRatings page to use custom table row component
+   Summary: Implemented AlbumRatings page with AlbumRatingTableRow for inline editing with dropdowns,
+            supporting full CRUD operations for M:N relationship.
+   AI Source URL: https://claude.ai/
+*/
+
+import { useState, useEffect } from 'react';
+import AlbumRatingTableRow from "../components/AlbumRatingsComponents/AlbumRatingTableRow.jsx";
 import CreateAlbumRatingsForm from "../components/AlbumRatingsComponents/CreateAlbumRatingsForm.jsx";
 
 function AlbumRatings({ backendURL }) {
 
-    // Set up a state variable `sales` to store and display the backend response
+    // Set up a state variable to store and display the backend response
     const [albumRatings, setAlbumRatings] = useState([]);
 
     const getData = async function () {
@@ -15,7 +31,7 @@ function AlbumRatings({ backendURL }) {
             // Convert the response into JSON format
             const { albumRatings } = await response.json();
 
-            // Update the sales state with the response data
+            // Update the state with the response data
             setAlbumRatings(albumRatings);
 
         } catch (error) {
@@ -36,18 +52,23 @@ function AlbumRatings({ backendURL }) {
 
             <table>
                 <thead>
-                <tr>
-                    {albumRatings.length > 0 && Object.keys(albumRatings[0]).map((header, index) => (
-                        <th key={index}>{header}</th>
-                    ))}
-                    <th></th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        {albumRatings.length > 0 && Object.keys(albumRatings[0]).map((header, index) => (
+                            <th key={index}>{header}</th>
+                        ))}
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
 
                 <tbody>
                     {albumRatings.map((rating, index) => (
-                        <TableRow key={index} rowObject={rating} backendURL={backendURL} refreshAlbumRatings={getData} />
+                        <AlbumRatingTableRow
+                            key={index}
+                            rating={rating}
+                            backendURL={backendURL}
+                            refreshAlbumRatings={getData}
+                        />
                     ))}
 
                 </tbody>
@@ -57,4 +78,6 @@ function AlbumRatings({ backendURL }) {
         </>
     );
 
-} export default AlbumRatings;
+}
+
+export default AlbumRatings;
