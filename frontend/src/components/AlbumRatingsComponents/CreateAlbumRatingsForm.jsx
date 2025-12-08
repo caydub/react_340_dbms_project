@@ -89,7 +89,6 @@ const CreateAlbumRatingsForm = ({ backendURL, refreshAlbumRatings }) => {
                     id="albumName"
                     value={formData.albumName}
                     onChange={handleChange}
-                    placeholder="Enter album name"
                     required
                 />
 
@@ -100,7 +99,6 @@ const CreateAlbumRatingsForm = ({ backendURL, refreshAlbumRatings }) => {
                     id="customerName"
                     value={formData.customerName}
                     onChange={handleChange}
-                    placeholder="First Last"
                     required
                 />
 
