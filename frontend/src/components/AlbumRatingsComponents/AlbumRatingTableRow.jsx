@@ -67,8 +67,7 @@ const AlbumRatingTableRow = ({ rating, backendURL, refreshAlbumRatings }) => {
                 body: JSON.stringify({
                     albumRatingID: editedValues.albumRatingID,
                     albumName: editedValues.albumName,
-                    firstName: firstName,
-                    lastName: lastName,
+                    customerFullName: editedValues.customer,
                     albumRating: parseFloat(editedValues.albumRating)
                 }),
             });
