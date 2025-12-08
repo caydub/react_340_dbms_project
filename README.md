@@ -11,7 +11,7 @@ Oregon State University | Fall 2025
 
 A full-stack web application for managing a record store's inventory, sales, customer ratings, and transactions. Built with React, Node.js/Express, and MariaDB to replace manual handwritten records and provide data-driven insights for inventory decisions.
 
-**Live Demo:** http://classwork.engr.oregonstate.edu:55695/
+**Live Demo:** http://classwork.engr.oregonstate.edu:6896/
 
 ---
 
@@ -501,7 +501,7 @@ For questions or issues, contact:
 - Andrew Walsh - (email address)
 
 **Project Repository:** (repository URL if applicable)  
-**Live Demo:** http://classwork.engr.oregonstate.edu:55695/
+**Live Demo:** http://classwork.engr.oregonstate.edu:6896/
 
 ---
 

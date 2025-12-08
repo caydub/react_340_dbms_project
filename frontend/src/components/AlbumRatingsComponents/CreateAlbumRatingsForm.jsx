@@ -42,8 +42,14 @@ const CreateAlbumRatingsForm = ({ backendURL, refreshAlbumRatings }) => {
 
         // Parse customer name into firstName and lastName
         const nameParts = formData.customerName.trim().split(' ');
+        // Validate that both first and last name are provided
+        if (nameParts.length < 2 || !nameParts[1].trim()) {
+            alert("Both first name and last name are required");
+            return;
+        }
+
         const firstName = nameParts[0];
-        const lastName = nameParts.slice(1).join(' ') || nameParts[0]; // Use first name if no last name
+        const lastName = nameParts.slice(1).join(' ');
 
         try {
             const response = await fetch(`${backendURL}/AlbumRatings/create`, {
